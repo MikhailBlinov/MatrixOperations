@@ -56,7 +56,7 @@ namespace MatrixOperations.Matrix
 
         public double Determinant(double[,] matrix)
         {
-            if ((matrix.GetLength(0) < 2) || (matrix.GetLength(1) < 2))
+            if ((matrix.GetLength(0) == 2) || (matrix.GetLength(1) == 2))
             {
                 return (matrix[0, 0] * matrix[1, 1] - matrix[0, 1] * matrix[1, 0]);
             }

@@ -29,6 +29,7 @@ namespace SimpleProject
 
                 Console.WriteLine(Environment.NewLine);
             } */
+            /*
             double[,] firstMatrix = new double[,] { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 }};
 
             Matrix matrix = new Matrix(firstMatrix);
@@ -36,7 +37,16 @@ namespace SimpleProject
             double[,] result = matrix.Transpose(firstMatrix);
 
             ShowMatrix(firstMatrix);
-            ShowMatrix(result);
+            ShowMatrix(result);*/
+
+
+            double[,] firstMatrix = new double[,] { { 1, 2, 0 }, { 3, 2, 1 }, { 0, 1, 2 } };
+
+            Matrix matrix = new Matrix();
+
+            double result = matrix.Determinant(firstMatrix);
+
+            Console.WriteLine(" deteminant = {0}", result);
 
             Console.WriteLine("It is the first message");
             Console.Read();
