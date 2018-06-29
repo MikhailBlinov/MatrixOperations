@@ -67,7 +67,26 @@ namespace MatrixOperations.Matrix
 
         public double[,] Transpose(double[,] matrix)
         {
-            throw new NotImplementedException();
+            if (matrix.GetLength(0) != matrix.GetLength(1))
+                throw new Exception("The number of rows doesn't equal to number of columns ");
+
+            double[,] result = new double[matrix.GetLength(0),matrix.GetLength(1)];
+
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    if (i >= j)
+                    {
+                        result[j,i] = matrix[i, j];
+                        result[i, j] = matrix[j, i];
+                    }
+                }
+            }
+
+
+            return result;
         }
     }
 }
