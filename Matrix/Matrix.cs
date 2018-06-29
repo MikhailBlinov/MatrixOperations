@@ -87,5 +87,29 @@ namespace MatrixOperations.Matrix
 
             return result;
         }
+
+
+         private double[,] GetSmallerMatrix(double[,] matrix, int row, int column)
+         {
+             double[,] result = new double[matrix.GetLength(0) - 1, matrix.GetLength(1) -1];
+
+             for (int i = 0, currentRow = 0; i < matrix.GetLength(0); i++)
+             {
+                 if (i == row) continue; 
+
+                for (int j = 0, currentColumn = 0; j < matrix.GetLength(1); j++)
+                {
+                    if(j == column) continue;
+
+                    result[currentRow, currentColumn] = matrix[i, j];
+
+                    currentColumn++;
+                }
+
+                 currentRow++;
+             }
+
+            return result;
+         }
     }
 }
