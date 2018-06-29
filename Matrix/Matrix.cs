@@ -16,8 +16,6 @@ namespace MatrixOperations.Matrix
 
          public  Matrix()
          {
-           
-              
          }
 
         public Matrix(double[,] firstMatrix)
