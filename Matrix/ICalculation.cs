@@ -19,9 +19,9 @@ namespace MatrixOperations.Matrix
         /// <returns>The calculated matrix</returns>
         double[,] Multiply(double[,] firstMatrix, double[,] secondMatrix);
 
-        double CalculateDeterminant(double[,] matrix);
+        double Determinant(double[,] matrix);
 
-        double[,] GetInverseMatrix(double[,] matrix);
+        double[,] InverseMatrix(double[,] matrix);
 
         double[,] Transpose(double[,] matrix);
 
