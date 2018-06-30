@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MatrixOperations.Matrix
 {
-    public class Matrix : ICalculation
+    public class MatrixOperations : ICalculation
     {
         private double[,] _firstMatrix;
         private double[,] _secondMatrix;
@@ -14,16 +14,16 @@ namespace MatrixOperations.Matrix
 
         public double[,] ResultMatrix => _resultMatrix;
 
-        public Matrix()
+        public MatrixOperations()
         {
         }
 
-        public Matrix(double[,] firstMatrix)
+        public MatrixOperations(double[,] firstMatrix)
         {
             _firstMatrix = firstMatrix;
         }
 
-        public Matrix(double[,] firstMatrix, double[,] secondMatrix)
+        public MatrixOperations(double[,] firstMatrix, double[,] secondMatrix)
         {
             _firstMatrix = firstMatrix;
             _secondMatrix = secondMatrix;
@@ -66,7 +66,7 @@ namespace MatrixOperations.Matrix
             for (int i = 0; i < matrix.GetLength(1); i++)
             {
                 double[,] tmpMatrix = GetSmallerMatrix(matrix, 0, i);
-                result += Math.Pow(-1, 0 + i)*matrix[0, i]*Determinant(tmpMatrix);
+                result += Math.Pow(-1, 0 + i) * matrix[0, i] * Determinant(tmpMatrix);
             }
 
             return result;
@@ -74,7 +74,19 @@ namespace MatrixOperations.Matrix
 
         public double[,] InverseMatrix(double[,] matrix)
         {
-            throw new NotImplementedException();
+            double[,] result = new double[matrix.GetLength(0), matrix.GetLength(1)];
+
+            double determinant = Determinant(matrix);
+
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    result[i, j] = Math.Pow(-1, i + j) * matrix[i, j] * Determinant(GetSmallerMatrix(matrix, i, j))/determinant;
+                }
+            }
+
+            return Transpose(result);
         }
 
         public double[,] Transpose(double[,] matrix)
@@ -126,6 +138,21 @@ namespace MatrixOperations.Matrix
             }
 
             return result;
+        }
+
+        public void ShowMatrix(double[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write("{0:F2} ", matrix[i, j]);
+                }
+
+                Console.WriteLine(Environment.NewLine);
+            }
+
+            Console.WriteLine(Environment.NewLine);
         }
     }
 }
